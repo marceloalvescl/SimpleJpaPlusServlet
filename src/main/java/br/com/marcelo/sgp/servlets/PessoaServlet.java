@@ -20,7 +20,7 @@ public class PessoaServlet extends HttpServlet {
 		
 		PessoaDAO dao = new PessoaDAO();
 		dao.incluirPessoa(nome, email);
-		
+		resp.sendRedirect("listaPessoas");
 	}
 
 }
