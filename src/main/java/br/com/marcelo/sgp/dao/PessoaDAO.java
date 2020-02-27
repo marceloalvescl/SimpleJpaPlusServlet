@@ -34,11 +34,46 @@ public class PessoaDAO {
 		Query query = em.createQuery("select p from Pessoa p");
 		List<Pessoa> lista = query.getResultList();
 		
-		
 		em.getTransaction().commit();
 		em.close();
 		
 		return lista;
+	}
+
+	public Pessoa selecionarPessoa(Integer id) {
+		
+		EntityManager em = new JPAUtil().getEntityManager();
+		em.getTransaction().begin();
+
+		Query query = em.createQuery("select p from Pessoa p where p.id = :pId");
+		query.setParameter("pId", id);
+		Pessoa pessoa = (Pessoa) query.getSingleResult();
+		
+		em.getTransaction().commit();
+		em.close();
+		
+		return pessoa;
+	}
+	
+	public void alterarPessoa(Pessoa pessoa) {
+		
+		EntityManager em = new JPAUtil().getEntityManager();
+		em.getTransaction().begin();
+		
+		Query query = em.createQuery("update Pessoa p "
+				+ "set p.email = :pEmail, "
+				+ "p.nome = :pNome "
+				+ "where p.id = :pId");
+		query.setParameter("pEmail", pessoa.getEmail());
+		query.setParameter("pNome", pessoa.getNome());
+		query.setParameter("pId", pessoa.getId());
+		
+		query.executeUpdate();
+		
+		em.getTransaction().commit();
+		em.close();
+		
+		System.out.println(pessoa.getNome());
 	}
 	
 }

@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>br.com.marcelo.sgp.servlets.ListaPessoasServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AlterarPessoaServlet</servlet-name>
+  	<display-name>AlterarPessoaServlet</display-name>
+  	<description></description>
+  	<servlet-class>br.com.marcelo.sgp.servlets.AlterarPessoaServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>PessoaServlet</servlet-name>
   	<url-pattern>/PessoaServlet</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>ListaPessoasServlet</servlet-name>
   	<url-pattern>/ListaPessoasServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AlterarPessoaServlet</servlet-name>
+  	<url-pattern>/AlterarPessoaServlet</url-pattern>
   </servlet-mapping>
 </web-app>
